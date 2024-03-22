@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #status {
+            font-size: 18px;
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function getStatus() {
+            fetch('/status')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('status').innerText = JSON.stringify(data.message);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            getStatus();
+
+            setInterval(getStatus, 15000);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Status</h1>
+        <div id="status"></div>
+    </div>
+</body>
+</html>

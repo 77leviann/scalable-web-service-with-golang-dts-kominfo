@@ -1,0 +1,7 @@
+{
+  "message": "Status Air: Bahaya, Status Angin: Bahaya",
+  "status": {
+    "water": 75,
+    "wind": 30
+  }
+}
